@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class ContextualLoggingServletFilter extends OncePerRequestFilter {
-    private final ContextualLoggingProperties props;
+public abstract class AbstractContextualLoggingServletFilter extends OncePerRequestFilter {
+    protected final ContextualLoggingProperties props;
 
-    public ContextualLoggingServletFilter(ContextualLoggingProperties props) {
+    protected AbstractContextualLoggingServletFilter(ContextualLoggingProperties props) {
         this.props = props;
     }
 
@@ -20,7 +20,7 @@ public class ContextualLoggingServletFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         try {
-            if (req.getParameter("debug") != null) {
+            if (enableContextualLogging(req)) {
                 ContextualLoggingContextHolder.set(props.createContext());
             }
 
@@ -29,4 +29,6 @@ public class ContextualLoggingServletFilter extends OncePerRequestFilter {
             ContextualLoggingContextHolder.clear();
         }
     }
+
+    protected abstract boolean enableContextualLogging(HttpServletRequest req);
 }

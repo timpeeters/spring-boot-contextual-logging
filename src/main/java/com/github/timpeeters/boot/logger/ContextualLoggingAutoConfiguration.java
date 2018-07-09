@@ -1,5 +1,6 @@
 package com.github.timpeeters.boot.logger;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -17,9 +18,10 @@ public class ContextualLoggingAutoConfiguration {
     }
 
     @Bean
+    @ConditionalOnMissingBean
     @ConditionalOnWebApplication
     public FilterRegistrationBean contextualLoggingFilter(ContextualLoggingProperties props) {
-        FilterRegistrationBean filter = new FilterRegistrationBean(new ContextualLoggingServletFilter(props));
+        FilterRegistrationBean filter = new FilterRegistrationBean(new DefaultContextualLoggingServletFilter(props));
         filter.addUrlPatterns("/*");
 
         return filter;
