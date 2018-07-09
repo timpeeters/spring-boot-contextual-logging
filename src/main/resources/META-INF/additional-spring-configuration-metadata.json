@@ -1,0 +1,49 @@
+{
+    "hints": [
+        {
+            "name": "contextual.logging.level.keys",
+            "values": [
+                {
+                    "value": "root",
+                    "description": "Root logger used to assign the default logging level."
+                }
+            ],
+            "providers": [
+                {
+                    "name": "logger-name"
+                }
+            ]
+        },
+        {
+            "name": "contextual.logging.level.values",
+            "values": [
+                {
+                    "value": "trace"
+                },
+                {
+                    "value": "debug"
+                },
+                {
+                    "value": "info"
+                },
+                {
+                    "value": "warn"
+                },
+                {
+                    "value": "error"
+                },
+                {
+                    "value": "fatal"
+                },
+                {
+                    "value": "off"
+                }
+            ],
+            "providers": [
+                {
+                    "name": "any"
+                }
+            ]
+        }
+    ]
+}

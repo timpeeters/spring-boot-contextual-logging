@@ -11,7 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @TestPropertySource(properties = {
         "contextual.logging.enabled=true",
-        "logging.level.com.github.timpeeters.boot.logger=info"
+        "contextual.logging.level.com.github.timpeeters=info",
+        "contextual.logging.level.com.github.timpeeters.boot.logger=debug",
+        "logging.level.root=warn"
 })
 public class ContextualLoggingEnabledIT extends AbstractIT {
     @Rule
@@ -21,19 +23,22 @@ public class ContextualLoggingEnabledIT extends AbstractIT {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void contextualLoggingEnabled() {
+    public void contextualLogging() {
         restTemplate.getForEntity("/", String.class);
 
         assertThat(outputCapture.toString())
-                .contains("info logging")
-                .doesNotContain("debug logging");
+                .contains("warn in com.github.timpeeters")
+                .doesNotContain("info in com.github.timpeeters");
     }
 
     @Test
-    public void contextualLoggingEnabled_debug() {
+    public void contextualLogging_debug() {
         restTemplate.getForEntity("/?debug", String.class);
 
         assertThat(outputCapture.toString())
-                .contains("debug logging");
+                .contains("warn in com.github.timpeeters")
+                .contains("info in com.github.timpeeters")
+                .contains("debug in com.github.timpeeters.boot.logger");
     }
 }
+

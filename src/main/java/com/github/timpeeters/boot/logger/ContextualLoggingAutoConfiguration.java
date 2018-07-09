@@ -18,8 +18,8 @@ public class ContextualLoggingAutoConfiguration {
 
     @Bean
     @ConditionalOnWebApplication
-    public FilterRegistrationBean contextualLoggingFilter() {
-        FilterRegistrationBean filter = new FilterRegistrationBean(new ContextualLoggingServletFilter());
+    public FilterRegistrationBean contextualLoggingFilter(ContextualLoggingProperties props) {
+        FilterRegistrationBean filter = new FilterRegistrationBean(new ContextualLoggingServletFilter(props));
         filter.addUrlPatterns("/*");
 
         return filter;
