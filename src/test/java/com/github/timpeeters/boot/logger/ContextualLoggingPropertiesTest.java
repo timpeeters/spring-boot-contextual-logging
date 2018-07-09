@@ -1,7 +1,6 @@
 package com.github.timpeeters.boot.logger;
 
 import org.junit.Test;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.logging.LogLevel;
 
 import java.util.Collections;
