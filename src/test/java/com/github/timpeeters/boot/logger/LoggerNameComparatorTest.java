@@ -14,8 +14,8 @@ public class LoggerNameComparatorTest {
 
     @Test
     public void comparator() {
-        assertThat(sort(Arrays.asList(Logger.ROOT_LOGGER_NAME, "com.github", "com.github.timpeeters"), comparator))
-                .containsExactly("com.github.timpeeters", "com.github", Logger.ROOT_LOGGER_NAME);
+        assertThat(sort(Arrays.asList("org", Logger.ROOT_LOGGER_NAME, "com", "com.github.timpeeters"), comparator))
+                .containsExactly("org", "com.github.timpeeters", "com", Logger.ROOT_LOGGER_NAME);
     }
 
     private List<String> sort(List<String> values, Comparator<String> comparator) {
