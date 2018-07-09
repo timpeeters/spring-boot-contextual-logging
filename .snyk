@@ -1,0 +1,10 @@
+version: v1.12.0
+ignore:
+  SNYK-JAVA-ORGSPRINGFRAMEWORK-31689:
+    - '*':
+        reason: Already using 4.3.18 with a fix for this vulnerability.
+        expires: 2019-01-01T10:00:00.000Z
+  SNYK-JAVA-ORGSPRINGFRAMEWORK-31644:
+    - '*':
+        reason: No remediation available.
+        expires: 2019-01-01T10:00:00.000Z
