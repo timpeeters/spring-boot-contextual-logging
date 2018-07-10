@@ -45,7 +45,7 @@ public final class ContextualLoggingContext {
     }
 
     private Predicate<Map.Entry<String, LogLevel>> isMatchingLoggerName(Logger logger) {
-        return e -> logger.getName().startsWith(e.getKey());
+        return e -> logger.getName().startsWith(e.getKey()) || e.getKey().equalsIgnoreCase(Logger.ROOT_LOGGER_NAME);
     }
 
     private Function<Map.Entry<String, LogLevel>, Boolean> isLevelGreaterOrEqual(Level level) {
