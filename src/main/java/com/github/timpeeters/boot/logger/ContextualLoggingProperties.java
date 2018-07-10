@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
-@ConfigurationProperties(ignoreInvalidFields = true, prefix = "contextual.logging")
+@ConfigurationProperties(prefix = "contextual.logging")
 public class ContextualLoggingProperties {
     private static final Logger LOG = LoggerFactory.getLogger(ContextualLoggingProperties.class);
 
