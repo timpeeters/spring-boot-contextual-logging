@@ -33,7 +33,7 @@ public class ContextualLoggingAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     @ConditionalOnWebApplication
-    public Filter contextualLoggingFilter(ContextualLoggingProperties props) {
+    public AbstractContextualLoggingServletFilter contextualLoggingFilter(ContextualLoggingProperties props) {
         return new DefaultContextualLoggingServletFilter(props);
     }
 }
