@@ -1,10 +1,12 @@
 package com.github.timpeeters.boot.logger;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.cloud.context.scope.refresh.RefreshScopeRefreshedEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,8 +16,21 @@ import org.springframework.context.annotation.Configuration;
 public class ContextualLoggingAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
-    public ContextualLoggingInitializer contextualLoggingInitializer() {
-        return new ContextualLoggingInitializer();
+    public ContextualLoggingLogbackFilter contextualLoggingLogbackFilter() {
+        return new ContextualLoggingLogbackFilter();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ContextRefreshedListener contextRefreshedListener(ContextualLoggingLogbackFilter filter) {
+        return new ContextRefreshedListener(filter);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnClass(RefreshScopeRefreshedEvent.class)
+    public RefreshScopeRefreshedListener refreshScopeRefreshedListener(ContextualLoggingLogbackFilter filter) {
+        return new RefreshScopeRefreshedListener(filter);
     }
 
     @Bean

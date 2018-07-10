@@ -15,7 +15,7 @@ public class ContextualLoggingDisabledIT extends AbstractIT {
 
     @Test
     public void contextualLoggingDisabled() {
-        assertThatThrownBy(() -> applicationContext.getBean(ContextualLoggingInitializer.class))
+        assertThatThrownBy(() -> applicationContext.getBean(ContextRefreshedListener.class))
                 .isInstanceOf(NoSuchBeanDefinitionException.class);
     }
 }
