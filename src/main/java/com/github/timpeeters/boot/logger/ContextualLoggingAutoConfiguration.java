@@ -8,8 +8,6 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.servlet.Filter;
-
 @ConditionalOnProperty(prefix = "contextual.logging", name = "enabled", havingValue = "true")
 @Configuration
 @EnableConfigurationProperties(ContextualLoggingProperties.class)
@@ -23,8 +21,8 @@ public class ContextualLoggingAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     @ConditionalOnWebApplication
-    public FilterRegistrationBean contextualLoggingFilterRegistrationBean(Filter contextualLoggingFilter) {
-        FilterRegistrationBean filter = new FilterRegistrationBean(contextualLoggingFilter);
+    public FilterRegistrationBean contextualLoggingFilterRegistrationBean(AbstractContextualLoggingServletFilter f) {
+        FilterRegistrationBean filter = new FilterRegistrationBean(f);
         filter.addUrlPatterns("/*");
 
         return filter;
