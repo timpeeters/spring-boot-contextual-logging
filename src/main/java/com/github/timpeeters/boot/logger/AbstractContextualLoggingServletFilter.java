@@ -20,7 +20,7 @@ public abstract class AbstractContextualLoggingServletFilter extends OncePerRequ
             throws ServletException, IOException {
 
         try {
-            if (enableContextualLogging(req)) {
+            if (shouldEnableContextualLogging(req)) {
                 ContextualLoggingContextHolder.set(props.createContext());
             }
 
@@ -30,5 +30,5 @@ public abstract class AbstractContextualLoggingServletFilter extends OncePerRequ
         }
     }
 
-    protected abstract boolean enableContextualLogging(HttpServletRequest req);
+    protected abstract boolean shouldEnableContextualLogging(HttpServletRequest req);
 }

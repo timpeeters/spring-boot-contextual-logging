@@ -8,7 +8,7 @@ public class DefaultContextualLoggingServletFilter extends AbstractContextualLog
     }
 
     @Override
-    protected boolean enableContextualLogging(HttpServletRequest req) {
+    protected boolean shouldEnableContextualLogging(HttpServletRequest req) {
         return req.getParameter("debug") != null;
     }
 }
