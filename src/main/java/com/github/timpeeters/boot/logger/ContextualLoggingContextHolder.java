@@ -15,6 +15,6 @@ public final class ContextualLoggingContextHolder {
     }
 
     public static void clear() {
-        CONTEXT.set(null);
+        CONTEXT.remove();
     }
 }
