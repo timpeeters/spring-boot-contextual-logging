@@ -11,6 +11,8 @@ public class ContextRefreshedListener extends AbstractEventListener<ContextRefre
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        getLoggerContext().addTurboFilter(filter);
+        if (!getLoggerContext().getTurboFilterList().contains(filter)) {
+            getLoggerContext().addTurboFilter(filter);
+        }
     }
 }
