@@ -1,6 +1,7 @@
 package com.github.timpeeters.boot.logger;
 
 import java.util.Comparator;
+import java.util.function.Function;
 
 public class LoggerNameComparator implements Comparator<String> {
     private final String rootLoggerName;
@@ -11,10 +12,12 @@ public class LoggerNameComparator implements Comparator<String> {
 
     @Override
     public int compare(String loggerName, String anotherLoggerName) {
-        if (rootLoggerName.equals(loggerName)) {
-            return 1;
-        }
+        return Comparator.comparing(rootLoggerLast())
+                .thenComparing(Comparator.reverseOrder())
+                .compare(loggerName, anotherLoggerName);
+    }
 
-        return anotherLoggerName.compareTo(loggerName);
+    private Function<String, Integer> rootLoggerLast() {
+        return v -> v.equalsIgnoreCase(rootLoggerName) ? 1 : 0;
     }
 }
