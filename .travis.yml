@@ -31,7 +31,7 @@ deploy:
     - target/spring-boot-contextual-logging-${project_version}.jar
     - target/spring-boot-contextual-logging-${project_version}-javadoc.jar
     - target/spring-boot-contextual-logging-${project_version}-sources.jar
-  name: ${project.version}
+  name: ${project_version}
   on:
     repo: timpeeters/spring-boot-contextual-logging
     tags: true
