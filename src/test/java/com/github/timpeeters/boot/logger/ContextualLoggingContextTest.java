@@ -33,6 +33,11 @@ public class ContextualLoggingContextTest {
         assertThat(context.shouldLog(logger(ANOTHER_PACKAGE), Level.INFO)).isFalse();
     }
 
+    @Test
+    public void getLogLevels() {
+        assertThat(context.getLogLevels()).containsExactlyInAnyOrder("com.github.timpeeters=INFO", "ROOT=ERROR");
+    }
+
     private Logger logger(String name) {
         return (Logger) LoggerFactory.getLogger(name);
     }
