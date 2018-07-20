@@ -6,20 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.rule.OutputCapture;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@TestPropertySource(properties = {
-        "contextual.logging.enabled=true",
-        "contextual.logging.level.com.github.timpeeters=info",
-        "contextual.logging.level.com.github.timpeeters.boot.logger=debug",
-        "logging.level.com.github.timpeeters.boot.logger=info",
-        "logging.level.root=warn"
-})
-public class ContextualLoggingEnabledIT extends AbstractIT {
+public abstract class AbstractLoggingEnabledIT extends AbstractIT {
     @Rule
     public final OutputCapture outputCapture = new OutputCapture();
 
@@ -37,14 +28,13 @@ public class ContextualLoggingEnabledIT extends AbstractIT {
 
     @Test
     public void contextualLogging_debug() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(DefaultContextualLoggingServletFilter.DEBUG_HEADER, "");
-
-        restTemplate.exchange("/", HttpMethod.GET, new HttpEntity<>(headers), String.class);
+        restTemplate.exchange("/", HttpMethod.GET, createRequestEntity(), String.class);
 
         assertThat(outputCapture.toString())
                 .contains("warn in com.github.timpeeters")
                 .contains("info in com.github.timpeeters")
                 .contains("debug in com.github.timpeeters.boot.logger");
     }
+
+    protected abstract HttpEntity<Object> createRequestEntity();
 }

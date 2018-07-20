@@ -1,12 +1,11 @@
 package com.github.timpeeters.boot.logger;
 
 import org.junit.Test;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.TestPropertySource;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @TestPropertySource(properties = "contextual.logging.enabled=false")
 public class ContextualLoggingDisabledIT extends AbstractIT {
@@ -15,7 +14,6 @@ public class ContextualLoggingDisabledIT extends AbstractIT {
 
     @Test
     public void contextualLoggingDisabled() {
-        assertThatThrownBy(() -> applicationContext.getBean(ContextRefreshedListener.class))
-                .isInstanceOf(NoSuchBeanDefinitionException.class);
+        assertThat(applicationContext.getBeansOfType(ContextualLoggingAutoConfiguration.class)).isEmpty();
     }
 }

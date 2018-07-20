@@ -3,21 +3,22 @@ package com.github.timpeeters.boot.logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.logging.LogLevel;
 
 import javax.annotation.PostConstruct;
-import java.util.AbstractMap.SimpleEntry;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.StringJoiner;
-import java.util.stream.Collectors;
 
 @ConfigurationProperties(prefix = "contextual.logging")
 public class ContextualLoggingProperties {
     private static final Logger LOG = LoggerFactory.getLogger(ContextualLoggingProperties.class);
 
     private boolean enabled;
+
+    /**
+     * Source from where to read the log levels, defaults to HTTP headers.
+     */
+    private Source logLevelSource = Source.HEADER;
 
     /**
      * Log levels severity mapping. Use 'root' for the root logger.
@@ -37,6 +38,14 @@ public class ContextualLoggingProperties {
         this.enabled = enabled;
     }
 
+    public Source getLogLevelSource() {
+        return logLevelSource;
+    }
+
+    public void setLogLevelSource(Source logLevelSource) {
+        this.logLevelSource = logLevelSource;
+    }
+
     public Map<String, String> getLevel() {
         return level;
     }
@@ -45,25 +54,17 @@ public class ContextualLoggingProperties {
         this.level = level;
     }
 
-    public ContextualLoggingContext createContext() {
-        return ContextualLoggingContext.create(level.entrySet().stream()
-                .map(e -> new SimpleEntry<>(e.getKey(), toLogLevel(e.getValue())))
-                .collect(Collectors.toMap(SimpleEntry::getKey, SimpleEntry::getValue)));
-    }
-
-    private LogLevel toLogLevel(String value) {
-        try {
-            return LogLevel.valueOf(value.toUpperCase(Locale.ENGLISH));
-        } catch (IllegalArgumentException e) {
-            return LogLevel.OFF;
-        }
-    }
-
     @Override
     public String toString() {
         return new StringJoiner(", ", getClass().getSimpleName() + "[", "]")
                 .add("enabled=" + isEnabled())
+                .add("logLevelSource=" + getLogLevelSource())
                 .add("level=" + getLevel())
                 .toString();
+    }
+
+    public enum Source {
+        HEADER,
+        PROPERTIES
     }
 }

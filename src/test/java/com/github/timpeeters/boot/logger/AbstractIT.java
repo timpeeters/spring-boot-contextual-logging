@@ -15,6 +15,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 public abstract class AbstractIT {
     @SpringBootApplication
     public static class TestApplication {
+
         public static void main(String[] args) {
             SpringApplication.run(TestApplication.class, args);
         }
@@ -28,5 +29,6 @@ public abstract class AbstractIT {
                 getLogger("com.github.timpeeters.boot.logger").debug("debug in com.github.timpeeters.boot.logger");
             }
         }
+
     }
 }
