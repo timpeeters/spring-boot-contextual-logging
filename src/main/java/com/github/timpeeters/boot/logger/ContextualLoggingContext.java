@@ -6,11 +6,13 @@ import org.springframework.boot.logging.LogLevel;
 
 import java.util.Collections;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public final class ContextualLoggingContext {
     private static final EnumMap<LogLevel, Level> LEVELS = new EnumMap<>(LogLevel.class);
@@ -32,6 +34,12 @@ public final class ContextualLoggingContext {
         sortedMap.putAll(levels);
 
         this.levels = Collections.unmodifiableSortedMap(sortedMap);
+    }
+
+    public List<String> getLogLevels() {
+        return levels.entrySet().stream()
+                .map(e -> e.getKey() + "=" + e.getValue().name())
+                .collect(Collectors.toList());
     }
 
     public static ContextualLoggingContext create(Map<String, LogLevel> levels) {
