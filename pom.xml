@@ -167,7 +167,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.5.14.RELEASE</version>
+                <version>2.0.3.RELEASE</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -175,7 +175,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Edgware.SR4</version>
+                <version>Finchley.RELEASE</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>

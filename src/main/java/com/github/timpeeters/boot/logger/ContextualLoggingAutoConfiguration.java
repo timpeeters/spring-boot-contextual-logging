@@ -38,14 +38,17 @@ public class ContextualLoggingAutoConfiguration {
     @ConditionalOnWebApplication
     public ContextualLoggingServletFilter contextualLoggingServletFilter(
             RequestEvaluator requestEvaluator, LogLevelSource logLevelSource) {
+
         return new ContextualLoggingServletFilter(requestEvaluator, logLevelSource);
     }
 
     @Bean
     @ConditionalOnMissingBean
     @ConditionalOnWebApplication
-    public FilterRegistrationBean contextualLoggingFilterRegistrationBean(ContextualLoggingServletFilter f) {
-        FilterRegistrationBean filter = new FilterRegistrationBean(f);
+    public FilterRegistrationBean<ContextualLoggingServletFilter> contextualLoggingFilterRegistrationBean(
+            ContextualLoggingServletFilter f) {
+
+        FilterRegistrationBean<ContextualLoggingServletFilter> filter = new FilterRegistrationBean<>(f);
         filter.addUrlPatterns("/*");
         filter.setOrder(Ordered.HIGHEST_PRECEDENCE);
 
