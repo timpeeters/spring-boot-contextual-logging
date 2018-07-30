@@ -6,7 +6,7 @@ Spring Boot Contextual Logging
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/da1616cd10144c059cab4fd8e6f3eac2)](https://www.codacy.com/app/timpeeters/spring-boot-contextual-logging?utm_source=github.com&utm_medium=referral&utm_content=timpeeters/spring-boot-contextual-logging&utm_campaign=Badge_Coverage)
 [![Known Vulnerabilities](https://snyk.io/test/github/timpeeters/spring-boot-contextual-logging/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/timpeeters/spring-boot-contextual-logging?targetFile=pom.xml)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=timpeeters/spring-boot-contextual-logging)](https://dependabot.com)
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.timpeeters/spring-boot-contextual-logging.svg)](https://repo1.maven.org/maven2/com/github/timpeeters/spring-boot-contextual-logging/)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.timpeeters/spring-boot-contextual-logging/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.timpeeters/spring-boot-contextual-logging)
 
 This project allows to configure Spring Boot logging on a per-request basis. 
 Currently this project only supports Logback, the default logging framework in Spring Boot.
@@ -127,4 +127,4 @@ contextual.logging.level.com.github=debug
 References
 ----------
 
-- https://logback.qos.ch/
+- https://logback.qos.ch
