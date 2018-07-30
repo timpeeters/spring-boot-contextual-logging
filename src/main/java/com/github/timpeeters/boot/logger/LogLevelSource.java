@@ -10,6 +10,7 @@ import java.util.Map;
  *
  * @author Tim Peeters
  */
+@FunctionalInterface
 public interface LogLevelSource {
     /**
      * Returns the contextual log levels for the given request.
