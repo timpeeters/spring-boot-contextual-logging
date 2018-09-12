@@ -175,7 +175,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.RELEASE</version>
+                <version>Finchley.SR1</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
