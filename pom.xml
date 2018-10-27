@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.timpeeters</groupId>
     <artifactId>spring-boot-contextual-logging</artifactId>
-    <version>2.0.2-SNAPSHOT</version>
+    <version>2.0.2</version>
     <packaging>jar</packaging>
     <name>Spring Boot Contextual Logging</name>
     <description>Spring Boot Contextual Logging</description>
