@@ -443,9 +443,7 @@
                                     <goal>sign</goal>
                                 </goals>
                                 <configuration>
-                                    <gpgArguments>
-                                        <arg>--batch</arg>
-                                    </gpgArguments>
+                                    <executable>gpg</executable>
                                 </configuration>
                             </execution>
                         </executions>
