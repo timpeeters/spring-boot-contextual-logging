@@ -442,9 +442,6 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
-                                <configuration>
-                                    <executable>gpg</executable>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
