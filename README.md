@@ -16,13 +16,14 @@ Versions
 --------
 
 Multiple branches are maintained to support multiple Spring Boot versions.
-The following tables show the relation between the Spring Boot version and the Spring Boot Actuator Server Config version.
+The following tables show the relation between the Spring Boot version and the Spring Boot Contextual Logging version.
 
-| Spring Boot | Spring Boot Actuator Server Config | Branch |
-| :---        | :---                               | :---   |
-| 1.5.x       | 1.0.x                              | 1.0.x  |
-| 2.0.x       | 2.0.x                              | 2.0.x  |
-| 2.1.x       | 2.1.x                              | master |
+| Spring Boot | Spring Boot Contextual Logging | Branch |
+| :---        | :---                           | :---   |
+| 1.5.x       | 1.0.x                          | 1.0.x  |
+| 2.0.x       | 2.0.x                          | 2.0.x  | 
+| 2.1.x       | 2.1.x                          | 2.1.x  |
+| 2.2.x       | 2.2.x                          | master |
 
 
 Installation
