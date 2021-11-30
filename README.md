@@ -2,7 +2,6 @@ Spring Boot Contextual Logging
 ==============================
 
 [![Known Vulnerabilities](https://snyk.io/test/github/timpeeters/spring-boot-contextual-logging/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/timpeeters/spring-boot-contextual-logging?targetFile=pom.xml)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=timpeeters/spring-boot-contextual-logging)](https://dependabot.com)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.timpeeters/spring-boot-contextual-logging/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.timpeeters/spring-boot-contextual-logging)
 
 This project allows to configure Spring Boot logging on a per-request basis. 
